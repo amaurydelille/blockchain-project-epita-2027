@@ -8,6 +8,7 @@ GUESS_TWICE_ERROR="You cannot submit more than one guess."
 DEADLINE_ERROR="You can neither guess nor join a game after the deadline."
 WIN_AMOUNT_ERROR="Only the winner of the game can get the amount of the contract."
 WIN_AMOUNT_DEADLINE_ERROR="The amount of the contract can only be earned AFTER the deadline."
+REVEAL_DEADLINE_ERROR="You can only reveal the winner after the deadline."
 
 @sp.module
 def main():
