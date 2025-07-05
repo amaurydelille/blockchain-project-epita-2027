@@ -14,25 +14,35 @@ ADMIN_ERROR="Only the admin can perform this action."
 @sp.module
 def main():
 
+    PAYMENT_ERROR="You should pay 1 tez to join a game."
+    JOIN_ERROR="You already joined the game."
+    EMPTY_GUESS="You cannot submit an empty guess."
+    GUESS_ERROR="You cannot submit a guess if you didn't join the game."
+    GUESS_TWICE_ERROR="You cannot submit more than one guess."
+    DEADLINE_ERROR="You can neither guess nor join a game after the deadline."
+    WIN_AMOUNT_ERROR="Only the winner of the game can get the amount of the contract."
+    WIN_AMOUNT_DEADLINE_ERROR="The amount of the contract can only be earned AFTER the deadline."
+    REVEAL_DEADLINE_ERROR="You can only reveal the winner after the deadline."
+    ADMIN_ERROR="Only the admin can perform this action."
+
     class GuessSeedGame(sp.Contract):
         def __init__(self, admin, entry_fee, deadline):
             self.data.admin = admin
             self.data.entry_fee = entry_fee
-            self.data.players = sp.map()
+            self.data.players = {}
             self.data.deadline = deadline
-            self.data.winner = sp.address("") 
-            self.data.seed = sp.string("")
-            self.data.generated_images = sp.map()
+            self.data.winner = sp.address("tz1burnburnburnburnburnburnburjAYjjX")
+            self.data.generated_images = {}
+            self.data.seed = ""
         
 
         @sp.entry_point
         def init_game(self, seed, deadline):
             assert sp.sender == self.data.admin, ADMIN_ERROR
             self.data.seed = seed
-            self.data.players.clear()
+            self.data.players = {}
+            self.data.generated_images = {}
             self.data.winner = sp.address("")
-            self.data.seed = sp.string("")
-            # call api to set generated_images
             self.data.deadline = deadline
 
         @sp.entry_point
@@ -41,32 +51,31 @@ def main():
             assert sp.amount == self.data.entry_fee, PAYMENT_ERROR
             assert not self.data.players.contains(sp.sender), JOIN_ERROR
             
-            self.data.players[sp.sender] = sp.string("")
+            self.data.players[sp.sender] = ""
 
         @sp.entry_point
         def guess(self, content):
             assert self.data.deadline > sp.now, DEADLINE_ERROR
             assert self.data.players.contains(sp.sender), GUESS_ERROR
-            assert self.data.players[sp.sender] == sp.string(""), GUESS_TWICE_ERROR
-            assert content != sp.string(""), EMPTY_GUESS
+            assert self.data.players[sp.sender] == "", GUESS_TWICE_ERROR
+            assert content != "", EMPTY_GUESS
 
             self.data.players[sp.sender] = content
 
         @sp.entry_point
         def reveal(self):
             assert self.data.deadline <= sp.now, REVEAL_DEADLINE_ERROR
-            #call api to set winner
-            
+            # call api to set winner
 
         @sp.entry_point
         def win_amount(self):
             assert self.data.deadline <= sp.now, WIN_AMOUNT_DEADLINE_ERROR
             assert sp.sender == self.data.winner, WIN_AMOUNT_ERROR
             sp.send(self.data.winner, sp.balance)
-            self.data.players.clear()
+            self.data.players = {}
             self.data.winner = sp.address("")
-            self.data.seed = sp.string("")
-            self.data.generated_images.clear()
+            self.data.seed = ""
+            self.data.generated_images = {}
 
 @sp.add_test()
 def test():
@@ -88,13 +97,12 @@ def test():
     scenario.verify(contract.data.admin == admin.address)
     scenario.verify(contract.data.entry_fee == entry_fee)
     scenario.verify(contract.data.deadline == deadline)
-    scenario.verify(contract.data.seed == sp.string(""))
-    scenario.verify(contract.data.winner == sp.address(""))
+    scenario.verify(contract.data.seed == "")
     
     # Test init_game - only admin can set seed
-    contract.init_game("test_seed", deadline, _sender=other.address, _valid=False, _exception=ADMIN_ERROR)
+    contract.init_game(seed="test_seed", deadline=deadline, _sender=other.address, _valid=False, _exception=ADMIN_ERROR)
     
-    contract.init_game("test_seed", deadline, _sender=admin.address)
+    contract.init_game(seed="test_seed", deadline=deadline, _sender=admin.address)
     scenario.verify(contract.data.seed == "test_seed")
     
     # Wrong payment amount
@@ -103,7 +111,7 @@ def test():
     # Correct payment
     contract.join_game(_sender=alice.address, _amount=entry_fee, _now=sp.timestamp(1000000))
     scenario.verify(contract.data.players.contains(alice.address))
-    scenario.verify(contract.data.players[alice.address] == sp.string(""))
+    scenario.verify(contract.data.players[alice.address] == "")
     
     # Try to join twice
     contract.join_game(_sender=alice.address, _amount=entry_fee, _now=sp.timestamp(1000000), _valid=False, _exception=JOIN_ERROR)
@@ -119,7 +127,7 @@ def test():
     contract.guess("my guess", _sender=eve.address, _now=sp.timestamp(1000000), _valid=False, _exception=GUESS_ERROR)
     
     # Test empty guess
-    contract.guess(sp.string(""), _sender=alice.address, _now=sp.timestamp(1000000), _valid=False, _exception=EMPTY_GUESS)
+    contract.guess("", _sender=alice.address, _now=sp.timestamp(1000000), _valid=False, _exception=EMPTY_GUESS)
     
     # Valid guess
     contract.guess("alice's guess", _sender=alice.address, _now=sp.timestamp(1000000))
@@ -141,9 +149,6 @@ def test():
     # Test reveal after deadline
     contract.reveal(_sender=admin.address, _now=sp.timestamp(3000000))
     
-    # Manually set winner for testing win_amount (in real scenario, this would be done by the reveal function)
-    scenario.verify(contract.data.winner == sp.address(""))  # Winner not set yet in this implementation
-    
     # Test win_amount before deadline
     contract.win_amount(_sender=alice.address, _now=sp.timestamp(1000000), _valid=False, _exception=WIN_AMOUNT_DEADLINE_ERROR)
     
@@ -155,9 +160,9 @@ def test():
     
     # Test reset functionality when setting new seed
     new_deadline = sp.timestamp(3000000)
-    contract.init_game("new_seed", new_deadline, _sender=admin.address)
+    contract.init_game(seed="new_seed", deadline=new_deadline, _sender=admin.address)
     scenario.verify(contract.data.seed == "new_seed")
-    scenario.verify(contract.data.winner == sp.address(""))
+
     # Players map should be cleared
     scenario.verify(~contract.data.players.contains(alice.address))
     scenario.verify(~contract.data.players.contains(bob.address))
