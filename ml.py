@@ -1,6 +1,8 @@
 from sentence_transformers import SentenceTransformer
 import smartpy as sp
 import numpy as np
+from contract import main
+from contract.main import GuessSeedGame
 
 MODEL_NAME = "Qwen/Qwen3-Embedding-0.6B" # The latest, smallest and best model possible today.
 
@@ -11,16 +13,18 @@ class Judge:
     participants and guesses are valid.
     """
     
-    def __init__(self, seed: str, model_name: str = MODEL_NAME):
+    def __init__(self, seed: str, contract: GuessSeedGame, model_name: str = MODEL_NAME):
         """
         Initialize the judge with the model.
 
         Args:
             seed: The original seed.
             model_name: The name of the model to use. By default Qwen3-Embedding-0.6B.
+            contract: The contract instance.
         """
         self.model = SentenceTransformer(model_name)
         self.seed = seed
+        self.contract = contract
 
     def _cosine_similarity(self, a: np.ndarray, b: np.ndarray) -> float:
         """
@@ -56,5 +60,7 @@ class Judge:
         """
         Get the winner of the game.
         """
-        return max(similarities, key=similarities.get)
+        winner = max(similarities, key=similarities.get)
+        self.contract.data.winner = winner
+        return winner
     
