@@ -3,7 +3,7 @@
 ## Description
 
 We propose GuessTheSeed, a game where players have to guess the original seed that
-was use to generate n-images by n-text-to-image models. The player with the closest
+was used to generate n-images by n-text-to-image models. The player with the closest
 guess to the original seed wins the amount of the contract.
 
 
