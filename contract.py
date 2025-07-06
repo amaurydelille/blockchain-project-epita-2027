@@ -1,16 +1,5 @@
 import smartpy as sp
 
-PAYMENT_ERROR="You should pay 1 tez to join a game."
-JOIN_ERROR="You already joined the game."
-EMPTY_GUESS="You cannot submit an empty guess."
-GUESS_ERROR="You cannot submit a guess if you didn't join the game."
-GUESS_TWICE_ERROR="You cannot submit more than one guess."
-DEADLINE_ERROR="You can neither guess nor join a game after the deadline."
-WIN_AMOUNT_ERROR="Only the winner of the game can get the amount of the contract."
-WIN_AMOUNT_DEADLINE_ERROR="The amount of the contract can only be earned AFTER the deadline."
-REVEAL_DEADLINE_ERROR="You can only reveal the winner after the deadline."
-ADMIN_ERROR="Only the admin can perform this action."
-
 @sp.module
 def main():
 
@@ -34,7 +23,6 @@ def main():
             self.data.winner = sp.address("tz1burnburnburnburnburnburnburjAYjjX")
             self.data.generated_images = {}
             self.data.seed = ""
-        
 
         @sp.entry_point
         def init_game(self, seed, deadline):
@@ -100,13 +88,13 @@ def test():
     scenario.verify(contract.data.seed == "")
     
     # Test init_game - only admin can set seed
-    contract.init_game(seed="test_seed", deadline=deadline, _sender=other.address, _valid=False, _exception=ADMIN_ERROR)
+    contract.init_game(seed="test_seed", deadline=deadline, _sender=other.address, _valid=False, _exception=main.ADMIN_ERROR)
     
     contract.init_game(seed="test_seed", deadline=deadline, _sender=admin.address)
     scenario.verify(contract.data.seed == "test_seed")
     
     # Wrong payment amount
-    contract.join_game(_sender=alice.address, _amount=sp.tez(2), _now=sp.timestamp(1000000), _valid=False, _exception=PAYMENT_ERROR)
+    contract.join_game(_sender=alice.address, _amount=sp.tez(2), _now=sp.timestamp(1000000), _valid=False, _exception=main.PAYMENT_ERROR)
     
     # Correct payment
     contract.join_game(_sender=alice.address, _amount=entry_fee, _now=sp.timestamp(1000000))
@@ -114,46 +102,46 @@ def test():
     scenario.verify(contract.data.players[alice.address] == "")
     
     # Try to join twice
-    contract.join_game(_sender=alice.address, _amount=entry_fee, _now=sp.timestamp(1000000), _valid=False, _exception=JOIN_ERROR)
+    contract.join_game(_sender=alice.address, _amount=entry_fee, _now=sp.timestamp(1000000), _valid=False, _exception=main.JOIN_ERROR)
     
     # Bob joins
     contract.join_game(_sender=bob.address, _amount=entry_fee, _now=sp.timestamp(1000000))
     scenario.verify(contract.data.players.contains(bob.address))
     
     # Test join_game after deadline
-    contract.join_game(_sender=eve.address, _amount=entry_fee, _now=sp.timestamp(3000000), _valid=False, _exception=DEADLINE_ERROR)
+    contract.join_game(_sender=eve.address, _amount=entry_fee, _now=sp.timestamp(3000000), _valid=False, _exception=main.DEADLINE_ERROR)
     
     # Player must join first
-    contract.guess("my guess", _sender=eve.address, _now=sp.timestamp(1000000), _valid=False, _exception=GUESS_ERROR)
+    contract.guess("my guess", _sender=eve.address, _now=sp.timestamp(1000000), _valid=False, _exception=main.GUESS_ERROR)
     
     # Test empty guess
-    contract.guess("", _sender=alice.address, _now=sp.timestamp(1000000), _valid=False, _exception=EMPTY_GUESS)
+    contract.guess("", _sender=alice.address, _now=sp.timestamp(1000000), _valid=False, _exception=main.EMPTY_GUESS)
     
     # Valid guess
     contract.guess("alice's guess", _sender=alice.address, _now=sp.timestamp(1000000))
     scenario.verify(contract.data.players[alice.address] == "alice's guess")
     
     # Try to guess twice
-    contract.guess("alice's second guess", _sender=alice.address, _now=sp.timestamp(1000000), _valid=False, _exception=GUESS_TWICE_ERROR)
+    contract.guess("alice's second guess", _sender=alice.address, _now=sp.timestamp(1000000), _valid=False, _exception=main.GUESS_TWICE_ERROR)
     
     # Bob's guess
     contract.guess("bob's guess", _sender=bob.address, _now=sp.timestamp(1000000))
     scenario.verify(contract.data.players[bob.address] == "bob's guess")
     
     # Test guess after deadline
-    contract.guess("late guess", _sender=alice.address, _now=sp.timestamp(3000000), _valid=False, _exception=DEADLINE_ERROR)
+    contract.guess("late guess", _sender=alice.address, _now=sp.timestamp(3000000), _valid=False, _exception=main.DEADLINE_ERROR)
     
     # Test reveal before deadline
-    contract.reveal(_sender=admin.address, _now=sp.timestamp(1000000), _valid=False, _exception=REVEAL_DEADLINE_ERROR)
+    contract.reveal(_sender=admin.address, _now=sp.timestamp(1000000), _valid=False, _exception=main.REVEAL_DEADLINE_ERROR)
     
     # Test reveal after deadline
     contract.reveal(_sender=admin.address, _now=sp.timestamp(3000000))
     
     # Test win_amount before deadline
-    contract.win_amount(_sender=alice.address, _now=sp.timestamp(1000000), _valid=False, _exception=WIN_AMOUNT_DEADLINE_ERROR)
+    contract.win_amount(_sender=alice.address, _now=sp.timestamp(1000000), _valid=False, _exception=main.WIN_AMOUNT_DEADLINE_ERROR)
     
     # Test win_amount by non-winner after deadline (this will fail because winner is not set)
-    contract.win_amount(_sender=bob.address, _now=sp.timestamp(3000000), _valid=False, _exception=WIN_AMOUNT_ERROR)
+    contract.win_amount(_sender=bob.address, _now=sp.timestamp(3000000), _valid=False, _exception=main.WIN_AMOUNT_ERROR)
     
     # Test reset functionality when setting new seed
     new_deadline = sp.timestamp(3000000)
