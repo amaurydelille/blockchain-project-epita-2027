@@ -1,0 +1,19 @@
+# Blockchain Project Epita 2027 - GasMasters
+
+## Description
+
+We propose GuessTheSeed, a game where players have to guess the original seed that
+was use to generate n-images by n-text-to-image models. The player with the closest
+guess to the original seed wins the amount of the contract.
+
+
+---
+
+### Files Tree
+- ```contract.py```: contains the code of the contract, and the tests associated to it. The blockchain used is Tezos.
+- ```ml.py```: the utility file to generate and compare the images. We leverage the **Qwen3-Embedding-0.6B** model to generate the embeddings of the guesses and the original seed.
+- ```diagram.drawio```: the diagram of the architecture, it displays how the frontend and backend will interact on-chain and off-chain. On top of that you can find a picture of the diagram under the name ```architecture.png```.
+- ```report.pdf```: the report of the project, written by the team, explaining our choices.
+
+---
+Please find the smart contract on SmartPy IDE [here](https://smartpy.io/ide?code=eJy9WW1v2zYQ_u5fwakfamOusbTfhmmYl7hBh@YFidssKAqBliiHgUQJEh3PGbbfvuOLJFKmbNlNZyCNat4dn3vueHdUaJpnBUdliguebxAuUZkPBr@V@STNolVCBhGJUYopG45@HgwQfK6n9xezy3kwu7m5uvG9@2yFyodslUQoxxt0gjh5RjxDjxllCKMlTsnEk4p_XH24NLVwUhAcbaQkiRB_IKb07OJ6fh@cf5rd3irxEDOWAdLVIqUcYYZImvMNWq5IWWodKW1u0dJRwojGaAOLEY3Ya66AtjZXhuZ3H05n3ebSrCCgCEgyRiwcZ7Pp2ccPl21dxAiFjQoNg2WFyRLCMYc1gSQCXhIgRZu7A96mF1efGtKvWLKRkmvKGChlce2B3GhJuPwCp9mK8Wo5zBgvcMi3zbYBzzt1pflMbL8giOBCRG76fj67cQG_mX2eTT9uWa_okGYK8kRwYjrTycP07KLJoJoCHKXAobCXkyLOihS@pSUCrDRjoClVwwQD4@eC91tConMgagg5fqq9gtxG@iPyPQgoozwIhiVJ4rHaYYwIyG6CmJBxDczQEx8hPokwxxMFyleqHTK1PZCrnztk8wRvSFGC5N__dIhUmECmeuyQ1Dz7cNQBaFQAKUOPP58sVgXr@Hmc3j8@_umNOiwuCRjEnEQBTfGS7MRZAv@w7unIiI8oN4qBHM4Dt2IhI7GU8ZLBEOqdAYAgE1HNctiFRcJHvx2UsZlGuyGKX8fH4xBOnBHpZNsV6V5cimrTcNnB3fY2vwpYLFuPW4Wtg3pdOCzqjbNj9Q@XCVli20xPRAGCNlQO6@COxkZLsQztDtqX2sLXA_JQ1mydgwILyH0fAvt5brS6XlYsp4XX4@0m5zKkXUU_KB2jKw8OYVmb6Ue1agmH5egvfs2xs@tYZl5Bu0gShHMqJpUSmqU6gP3ggWygcvxoiJ2t94BqpiCPt6YDOyxKd7itBisLnGAWkq4y06PGHVa3msrvXndXTDmMgvGAk5IPR3IgVY@K@DIkDBc0UyjESlB9NfRkx0ei5SPR89EcliGNxUCrUMp_qm5d6eMwlOH1pmJB@4MTGhKnkFjQQots4RL5PVtoAUhtl8DsqbKQyQnRIXIlFjwDtTk_SOnn4YlaNhqEWKApGMJpPnz7k_wYNuqxzpecTOwJSfJSBdY9ANkh@NGvLTZ7vJKsy0ZOYdIDKJxYapMnUtB4M6znU3OE0jNUhWLUQ9Mgxpis@mg2xPkdLrr1VGaL1B45_ZZNF71RE28zsIrKUw8ZtUVz4iGR76mUhkev4d2vHsYoUMXBl4nTBCt4goSN_Pc4KYUQ@SskuZiIfRlnYwZyZMOxEA6OVM1bs4FF4F2RsaW4V6aiB6miayNtRpoahDiOBg9Ky9cn5C30zgBqsG8djBN9MPbRZs0uFtLTrCgInCON9UiQxgnrBtmH2K3ZwdrwEBNfLM2vriwvNvWFn69B@Hs6vy9CzURoYYQCLAGW@7BBAf8_w2JsN9ouHTU8fSe27nU7nIAmc6AT73rSa08rFuJr6RtKVxo4imlRtg6CGqK9VL@28ZrSYUM@OvzGWLxNp_HCyAnLgNNO0aMBGQOzBeizUNqBRQJ4XW7x1BvYNx5xe3_XeVcvsRwHvuVBSWAlOt6RfiE3rjHtg1954US5aNYNcHYVeBGODZOKYXPn7VxV7O469tqBBKapw8l9gfMuYeq3dwsSi5ehbqD6OuccEr4l8M57XifEXVQeivCdFX9zs@ZuuJsT4w754gei83K5G@4GsYy9sd7B1uPwUL5SXVO4NMeYiniHeFXWb2xpqV_a8NFeN_ccrb6J2b71uuIuxut4xeSLYLAFtX_9QOTUzSmMlYysm@kb_hN0XZsqTLtnZGGhPSKbVl9iTK73GA2srlvC7S2v_gyzIChMCC60Z23T_77ApLjPhj3WNKGRD_LpPx6uZnY-).
