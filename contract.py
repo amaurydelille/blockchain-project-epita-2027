@@ -155,9 +155,6 @@ def test():
     # Test win_amount by non-winner after deadline (this will fail because winner is not set)
     contract.win_amount(_sender=bob.address, _now=sp.timestamp(3000000), _valid=False, _exception=WIN_AMOUNT_ERROR)
     
-    # Note: In a complete implementation, the reveal function would set the winner
-    # and then the winner could call win_amount to get the contract balance
-    
     # Test reset functionality when setting new seed
     new_deadline = sp.timestamp(3000000)
     contract.init_game(seed="new_seed", deadline=new_deadline, _sender=admin.address)
