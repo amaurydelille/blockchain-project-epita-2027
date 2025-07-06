@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="GcYLn0UCIWGT01avuVUq" name="Page-1">
-        <mxGraphModel dx="1483" dy="529" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="1855" dy="599" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -61,7 +61,7 @@
                 <mxCell id="18" value="Bob&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" parent="1" vertex="1">
                     <mxGeometry x="-100" y="540" width="30" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="23" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;Step 2 (off-chain)&lt;/h1&gt;&lt;p&gt;A seed (a sentence, keyword) is generated or choosed&amp;nbsp;&lt;/p&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="1" vertex="1">
+                <mxCell id="23" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;Step 1 (off-chain)&lt;/h1&gt;&lt;p&gt;A seed (a sentence, keyword) is generated or choosed&amp;nbsp;&lt;/p&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="1" vertex="1">
                     <mxGeometry x="228.8" y="405" width="210" height="120" as="geometry"/>
                 </mxCell>
                 <mxCell id="24" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;Step 3 (off-chain)&lt;/h1&gt;&lt;p&gt;n text-to-images models generate a image based on the keyword.&lt;/p&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="1" vertex="1">
@@ -93,7 +93,7 @@
                         <mxPoint x="40" y="330" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="31" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;Step 1 (on-chain)&lt;/h1&gt;&lt;p&gt;First the game is initialized.&amp;nbsp;&lt;span style=&quot;background-color: transparent;&quot;&gt;Joining a game can be done under certain rules and conditions:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;ol&gt;&lt;li&gt;a player cannot join a game if the deadline is over&lt;/li&gt;&lt;li&gt;a player have to pay the exact entry fees to join a game&lt;/li&gt;&lt;li&gt;a player can join a game only once.&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;&lt;/p&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="1" vertex="1">
+                <mxCell id="31" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;Step 2 (on-chain)&lt;/h1&gt;&lt;p&gt;First the game is initialized.&amp;nbsp;&lt;span style=&quot;background-color: transparent;&quot;&gt;Joining a game can be done under certain rules and conditions:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;ol&gt;&lt;li&gt;a player cannot join a game if the deadline is over&lt;/li&gt;&lt;li&gt;a player have to pay the exact entry fees to join a game&lt;/li&gt;&lt;li&gt;a player can join a game only once.&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;&lt;/p&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="1" vertex="1">
                     <mxGeometry x="10" y="60" width="210" height="210" as="geometry"/>
                 </mxCell>
                 <mxCell id="32" value="@guess" style="rhombus;whiteSpace=wrap;html=1;" parent="1" vertex="1">
