@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="GcYLn0UCIWGT01avuVUq" name="Page-1">
-        <mxGraphModel dx="1749" dy="876" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="1483" dy="529" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -64,7 +64,7 @@
                 <mxCell id="23" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;Step 2 (off-chain)&lt;/h1&gt;&lt;p&gt;A seed (a sentence, keyword) is generated or choosed&amp;nbsp;&lt;/p&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="1" vertex="1">
                     <mxGeometry x="228.8" y="405" width="210" height="120" as="geometry"/>
                 </mxCell>
-                <mxCell id="24" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;Step 3 (off-chain)&lt;/h1&gt;&lt;p&gt;n text-to-images models generate a single image based on the keyword.&lt;/p&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="1" vertex="1">
+                <mxCell id="24" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;Step 3 (off-chain)&lt;/h1&gt;&lt;p&gt;n text-to-images models generate a image based on the keyword.&lt;/p&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="1" vertex="1">
                     <mxGeometry x="558.8" y="425" width="200" height="120" as="geometry"/>
                 </mxCell>
                 <mxCell id="25" value="" style="endArrow=classic;html=1;exitX=1.01;exitY=0.426;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.426;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" target="3" edge="1">
@@ -78,7 +78,7 @@
                         <mxPoint as="offset"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="28" value="@join_game" style="rhombus;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                <mxCell id="28" value="&lt;div&gt;@init_game&lt;/div&gt;@join_game" style="rhombus;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="40" y="280" width="80" height="80" as="geometry"/>
                 </mxCell>
                 <mxCell id="29" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="17" edge="1">
@@ -93,8 +93,8 @@
                         <mxPoint x="40" y="330" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="31" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;Step 1 (on-chain)&lt;/h1&gt;&lt;p&gt;Joining a game can be done under certain rules and conditions:&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;ol&gt;&lt;li&gt;a player cannot join a game if the deadline is over&lt;/li&gt;&lt;li&gt;a player have to pay the exact entry fees to join a game&lt;/li&gt;&lt;li&gt;a player can join a game only once.&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;&lt;/p&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="1" vertex="1">
-                    <mxGeometry x="10" y="90" width="210" height="180" as="geometry"/>
+                <mxCell id="31" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;Step 1 (on-chain)&lt;/h1&gt;&lt;p&gt;First the game is initialized.&amp;nbsp;&lt;span style=&quot;background-color: transparent;&quot;&gt;Joining a game can be done under certain rules and conditions:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;ol&gt;&lt;li&gt;a player cannot join a game if the deadline is over&lt;/li&gt;&lt;li&gt;a player have to pay the exact entry fees to join a game&lt;/li&gt;&lt;li&gt;a player can join a game only once.&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;&lt;/p&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="10" y="60" width="210" height="210" as="geometry"/>
                 </mxCell>
                 <mxCell id="32" value="@guess" style="rhombus;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="40" y="660" width="80" height="80" as="geometry"/>
@@ -121,19 +121,77 @@
                         <mxPoint as="offset"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="41" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="3" target="2">
+                <mxCell id="41" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="3" target="2" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="200" y="690" as="sourcePoint"/>
                         <mxPoint x="250" y="640" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="42" value="Images" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="41">
+                <mxCell id="42" value="Images" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="41" vertex="1" connectable="0">
                     <mxGeometry x="0.0335" y="-4" relative="1" as="geometry">
                         <mxPoint x="-1" as="offset"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="43" value="@reveal" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-                    <mxGeometry x="40" y="800" width="80" height="80" as="geometry"/>
+                <mxCell id="46" style="edgeStyle=none;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="43" target="2">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="-60" y="700"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="47" value="seed" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="46">
+                    <mxGeometry x="0.1708" y="2" relative="1" as="geometry">
+                        <mxPoint x="-2" y="14" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="43" value="@reveal" style="rhombus;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="-40" y="870" width="80" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="44" value="" style="endArrow=classic;startArrow=classic;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="43" target="3">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="140" y="840" as="sourcePoint"/>
+                        <mxPoint x="190" y="790" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="300" y="910"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="45" value="seed" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="44">
+                    <mxGeometry x="-0.267" y="1" relative="1" as="geometry">
+                        <mxPoint x="100" y="1" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="49" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="48" target="2">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="50" value="winner claim amount" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="49">
+                    <mxGeometry x="-0.1606" y="1" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="48" value="@win_amount" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="-120" y="240" width="80" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="51" value="" style="endArrow=classic;startArrow=classic;html=1;exitX=1;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="3" target="52">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="230" y="670" as="sourcePoint"/>
+                        <mxPoint x="440" y="800" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="52" value="Judge:&lt;div&gt;- compare&lt;/div&gt;&lt;div&gt;- get_winner&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+                    <mxGeometry x="425" y="780" width="80" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="53" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;Step 4&lt;/span&gt;&lt;/h1&gt;&lt;div&gt;Each player can take a guess.&amp;nbsp;&lt;span style=&quot;color: rgb(63, 63, 63); background-color: transparent;&quot;&gt;this step is done both on chain and off chain on the frontend.&lt;/span&gt;&lt;/div&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="750" width="230" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="55" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;Step 5&lt;/span&gt;&lt;/h1&gt;&lt;div&gt;The administrator reveal the original seed to the players, this step is done both on chain and off chain on the frontend.&lt;/div&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="-50" y="950" width="180" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="56" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;Step 6 (off-chain)&lt;/span&gt;&lt;/h1&gt;&lt;div&gt;The judge (which is also the admin) compares the guess and get the winner.&lt;/div&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="520" y="770" width="200" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="57" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;Step 7 (on-chain)&lt;/span&gt;&lt;/h1&gt;&lt;div&gt;The winner gets to claim his reward, which is the amount of the smart contract.&lt;/div&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="-340" y="210" width="200" height="120" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
